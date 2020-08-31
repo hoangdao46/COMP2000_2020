@@ -1,16 +1,18 @@
 import java.awt.*;
+import java.util.*;
 
 class Cell extends Rectangle {
     // fields
     static int size = 35;
-    char col;
-    int row;
-
+    int visc;
+    boolean colored = false;
+    String str;
+    Color color;
+    
     //constructors
-    public Cell(char col, int row, int x, int y){
+    public Cell(int x, int y){
         super(x,y,size,size);
-        this.col = col;
-        this.row = row;
+
     }
 
     //methods
@@ -18,11 +20,12 @@ class Cell extends Rectangle {
         if(contains(mousePos)){
             g.setColor(Color.GRAY);
         } else {
-            g.setColor(Color.WHITE);
+            g.setColor(color);
         }
         g.fillRect(x,y,size,size);
         g.setColor(Color.BLACK);
         g.drawRect(x,y,size,size);
+        
     }
 
     public boolean contains(Point p){
@@ -31,5 +34,8 @@ class Cell extends Rectangle {
         } else {
             return false;
         }
+    }
+    public void col(){
+        this.colored = true;
     }
 }
